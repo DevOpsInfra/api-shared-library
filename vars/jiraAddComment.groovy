@@ -8,6 +8,6 @@ def call(Map config=[:]) {
   def render = renderTemplate(rawBody,binding)
   def issueId = "${config.key}"
 
-  sh('curl -x $URL_PROXY -D- -u $JIRA_CREDENTIALS -X POST --data "'+render+'" -H "Content-Type: application/json" $JIRA_URL/rest/api/2/issue/"'+issueId+'"/comment')
+  sh('curl -x $PROXY_URL -D- -u $JIRA_CREDENTIALS -X POST --data "'+render+'" -H "Content-Type: application/json" $JIRA_URL/rest/api/2/issue/"'+issueId+'"/comment')
   
 }
